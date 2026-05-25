@@ -1,0 +1,690 @@
+/* ============================================
+   Итальянская палитра: aperol + olive
+   Заголовки: Cormorant Garamond | Текст: Manrope
+   ============================================ */
+
+:root {
+  --ivory: #FFFBF5;
+  --aperol: #F5592B;
+  --aperol-dark: #D94A1F;
+  --aperol-light: #FFF0E8;
+  --olive: #7A846B;
+  --olive-dark: #5C6554;
+  --olive-light: #EEF0EA;
+  --ink: #1A2E1F;
+  --muted: #3D4A40;
+}
+
+body {
+  font-family: Manrope, system-ui, sans-serif;
+  color: var(--ink);
+  background-color: var(--ivory);
+}
+
+/* --- Hero (mobile-first) --- */
+.hero {
+  position: relative;
+  display: block;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero__bg {
+  position: relative;
+  z-index: 0;
+  display: block;
+  width: 100%;
+}
+
+.hero__picture {
+  display: block;
+  width: 100%;
+  line-height: 0;
+  margin: 0;
+}
+
+.hero__picture img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+}
+
+.hero__picture--desktop {
+  display: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 46, 31, 0.1) 0%,
+    rgba(26, 46, 31, 0.05) 40%,
+    rgba(26, 46, 31, 0.55) 100%
+  );
+}
+
+.hero__content {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2.5rem 1.25rem 2rem;
+}
+
+/* Десктоп: полноэкранный cover */
+@media (min-width: 768px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero__picture--mobile {
+    display: none;
+  }
+
+  .hero__picture--desktop {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero__picture--desktop img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .hero::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(26, 46, 31, 0.2) 0%,
+      transparent 50%,
+      rgba(26, 46, 31, 0.35) 100%
+    );
+  }
+
+  .hero__content {
+    position: relative;
+    max-width: 38rem;
+    padding: 7rem 1.5rem 5rem;
+  }
+
+  .scroll-hint {
+    bottom: 2rem;
+  }
+}
+
+.hero__eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 251, 245, 0.95);
+  margin-bottom: 1rem;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+}
+
+.hero__title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(3rem, 11vw, 4.75rem);
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--ivory);
+  margin-bottom: 0.6rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.hero__venue {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.5rem, 4.5vw, 2.15rem);
+  font-style: italic;
+  font-weight: 500;
+  color: #FFF8F2;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.4);
+}
+
+.hero__date {
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: rgba(255, 251, 245, 0.98);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  color: rgba(255, 251, 245, 0.9);
+  transition: color 0.25s ease;
+}
+
+.scroll-hint:hover {
+  color: var(--ivory);
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+/* --- Секции: чередование фонов --- */
+.section-padding {
+  padding: 4rem 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .section-padding {
+    padding: 5rem 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 6rem 1.5rem;
+  }
+}
+
+.section--ivory {
+  background-color: var(--ivory);
+}
+
+.section--olive-tint {
+  background-color: var(--olive-light);
+}
+
+.section--aperol-tint {
+  background-color: var(--aperol-light);
+}
+
+.container-narrow {
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 500;
+  text-align: center;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+/* Основной «элегантный» текст — как в цитате дресс-кода */
+.text-serif-body,
+.section-lead {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+@media (min-width: 640px) {
+  .text-serif-body,
+  .section-lead {
+    font-size: 1.35rem;
+  }
+}
+
+.link-accent {
+  color: var(--aperol-dark);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.link-accent:hover {
+  color: var(--aperol);
+}
+
+/* --- Приветствие --- */
+.welcome-section {
+  border-top: 4px solid var(--aperol);
+}
+
+.welcome-text {
+  max-width: 36rem;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.welcome-text p + p {
+  margin-top: 1rem;
+}
+
+.welcome-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .welcome-photos {
+    gap: 1.25rem;
+    max-width: 40rem;
+  }
+}
+
+.welcome-photo {
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(245, 89, 43, 0.15);
+  border: 3px solid var(--olive);
+}
+
+.welcome-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.welcome-photos figure:first-child img {
+  object-position: 70% center;
+}
+
+.welcome-photos figure:last-child img {
+  object-position: 30% center;
+}
+
+/* --- Локация: фото + встроенная карта --- */
+.location-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .location-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.location-card {
+  border-radius: 1.25rem;
+  overflow: hidden;
+  min-height: 280px;
+}
+
+@media (min-width: 640px) {
+  .location-card {
+    min-height: 320px;
+  }
+}
+
+.location-card--photo {
+  position: relative;
+  box-shadow: 0 12px 32px rgba(92, 101, 84, 0.18);
+  border: 3px solid var(--olive);
+}
+
+.location-card--photo img {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.location-card__caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(transparent, rgba(26, 46, 31, 0.78));
+  color: var(--ivory);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.location-card--map {
+  display: flex;
+  flex-direction: column;
+  background: var(--ivory);
+  border: 3px solid var(--olive);
+  box-shadow: 0 12px 32px rgba(92, 101, 84, 0.15);
+  min-height: 300px;
+}
+
+.location-map-iframe {
+  flex: 1;
+  width: 100%;
+  min-height: 240px;
+  border: 0;
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .location-map-iframe {
+    min-height: 260px;
+  }
+}
+
+.location-map-link {
+  display: block;
+  text-align: center;
+  padding: 0.75rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--olive-dark);
+  background: var(--olive-light);
+  text-decoration: none;
+  border-top: 1px solid rgba(122, 132, 107, 0.25);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.location-map-link:hover {
+  background: var(--olive);
+  color: var(--ivory);
+}
+
+/* --- Таймлайн (мобильная вёрстка) --- */
+.timeline {
+  margin-top: 2.5rem;
+  list-style: none;
+  padding: 0;
+  margin-left: 0.35rem;
+}
+
+.timeline::before {
+  display: none;
+}
+
+.timeline-item {
+  position: relative;
+  padding: 0 0 1.75rem 1.35rem;
+  margin-left: 0.15rem;
+  border-left: 2px solid var(--olive);
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+  border-left-color: var(--olive);
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 0.4rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--aperol);
+  border: 2px solid var(--aperol-light);
+  box-sizing: border-box;
+}
+
+.timeline-time {
+  display: block;
+  width: auto;
+  font-family: Manrope, system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--aperol-dark);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 0.35rem;
+  line-height: 1.2;
+}
+
+.timeline-time::before {
+  display: none;
+}
+
+.timeline-content {
+  min-width: 0;
+}
+
+.timeline-title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+@media (min-width: 640px) {
+  .timeline-title {
+    font-size: 1.45rem;
+  }
+}
+
+.timeline-desc {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  color: var(--ink);
+  opacity: 0.85;
+  margin-top: 0.2rem;
+  font-size: 1.05rem;
+  font-weight: 400;
+}
+
+/* --- Дресс-код --- */
+.dresscode-quote {
+  text-align: center;
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 0 0.5rem;
+}
+
+.dresscode-quote::before {
+  content: '«';
+  color: var(--aperol);
+  margin-right: 0.1em;
+}
+
+.dresscode-quote::after {
+  content: '»';
+  color: var(--olive);
+  margin-left: 0.1em;
+}
+
+.moodboard {
+  width: 100%;
+  max-width: 56rem;
+  margin: 2.5rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .moodboard {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+  }
+}
+
+.moodboard-item {
+  margin: 0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  box-shadow: 0 4px 16px rgba(245, 89, 43, 0.1);
+  border: 2px solid transparent;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.moodboard-item:hover {
+  border-color: var(--olive);
+  box-shadow: 0 8px 24px rgba(122, 132, 107, 0.18);
+}
+
+.moodboard-item picture,
+.moodboard-item img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* --- FAQ --- */
+.faq-list {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.faq-item {
+  background: var(--ivory);
+  border: 2px solid rgba(122, 132, 107, 0.25);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.faq-item[open] {
+  border-color: var(--olive);
+  box-shadow: 0 6px 20px rgba(122, 132, 107, 0.12);
+}
+
+.faq-question {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-style: normal;
+  color: var(--ink);
+  padding: 1.1rem 1.25rem;
+  padding-right: 2.5rem;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  line-height: 1.35;
+}
+
+@media (min-width: 640px) {
+  .faq-question {
+    font-size: 1.4rem;
+  }
+}
+
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-question::after {
+  content: '+';
+  position: absolute;
+  right: 1.15rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: Manrope, system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--aperol);
+  transition: transform 0.25s ease;
+}
+
+.faq-item[open] .faq-question::after {
+  content: '−';
+  color: var(--olive-dark);
+}
+
+.faq-answer {
+  padding: 0 1.25rem 1.15rem;
+  margin: 0;
+  border-top: 1px solid rgba(122, 132, 107, 0.15);
+  padding-top: 0.85rem;
+}
+
+.faq-answer .link-accent {
+  font-style: italic;
+}
+
+/* --- RSVP --- */
+.rsvp-frame-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: var(--ivory);
+  border: 2px solid var(--olive);
+  min-height: 480px;
+  height: clamp(480px, 75vh, 900px);
+}
+
+.rsvp-iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* --- Footer --- */
+.site-footer {
+  padding: 2.25rem 1rem;
+  text-align: center;
+  background-color: var(--olive-light);
+  color: var(--ink);
+  border-top: 2px solid var(--olive);
+}
+
+.site-footer p:first-child {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 0.35rem;
+}
+
+.site-footer p:last-child {
+  font-family: Manrope, system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+}
+
+/* --- Появление при скролле --- */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-bounce-slow { animation: none; }
+  .reveal-section { opacity: 1; transform: none; transition: none; }
+}

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<!--
+  НАСТРОЙКА:
+  1. assets/images/ — hero, couple-03/02, venue, mood-01…10
+  2. Секция #welcome — ваши приветственные слова
+  3. RSVP — embed-URL Google Формы
+-->
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Свадебное приглашение — Фёдор и Валерия, 29 августа 2026, Усадьба Саниных">
+  <title>Фёдор и Валерия — 29.08.2026</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['Manrope', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            ivory: '#FFFBF5',
+            aperol: '#F5592B',
+            'aperol-dark': '#D94A1F',
+            olive: '#7A846B',
+            'olive-dark': '#5C6554',
+            ink: '#1A2E1F',
+            muted: '#3D4A40',
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="css/styles.css?v=4">
+</head>
+<body class="bg-ivory text-ink font-sans antialiased">
+
+  <!-- ========== Hero ========== -->
+  <header id="hero" class="hero">
+    <div class="hero__bg">
+      <!-- Два варианта: CSS переключает (надёжно при file:// и в DevTools) -->
+      <picture class="hero__picture hero__picture--mobile">
+        <source srcset="assets/images/hero-mobile.webp" type="image/webp">
+        <img
+          src="assets/images/hero-mobile.jpg"
+          alt="Фёдор и Валерия"
+          width="1080"
+          height="1440"
+          fetchpriority="high"
+          decoding="async"
+        >
+      </picture>
+      <picture class="hero__picture hero__picture--desktop">
+        <source srcset="assets/images/hero.webp" type="image/webp">
+        <img
+          src="assets/images/hero.jpg"
+          alt="Фёдор и Валерия"
+          width="1920"
+          height="1080"
+          loading="lazy"
+          decoding="async"
+        >
+      </picture>
+    </div>
+
+    <div class="hero__content">
+      <p class="hero__eyebrow font-sans">Приглашение на свадьбу</p>
+      <h1 class="hero__title font-serif">Фёдор и Валерия</h1>
+      <p class="hero__venue font-serif">Усадьба Саниных</p>
+      <p class="hero__date font-sans">29 августа 2026</p>
+    </div>
+
+    <a href="#welcome" class="scroll-hint" aria-label="Прокрутить вниз">
+      <svg class="w-8 h-8 animate-bounce-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </a>
+  </header>
+
+  <main>
+    <!-- ========== Приветствие + фото пары ========== -->
+    <section id="welcome" class="section-padding section--ivory welcome-section">
+      <div class="container-narrow">
+        <h2 class="section-title">С любовью приглашаем вас</h2>
+
+        <div class="welcome-text text-serif-body">
+          <!-- Напишите здесь свои приветственные слова -->
+          <p>
+            Дорогие друзья и близкие! Мы хотим разделить с вами один из главных моментов в нашей жизни.
+            Будем рады видеть вас на празднике, который очень важен для нас — на нашей свадьбе.
+          </p>
+          <p>
+            Ниже вы найдёте всё, что нужно: место, программу дня, дресс-код и форму для подтверждения присутствия.
+          </p>
+        </div>
+
+        <div class="welcome-photos" aria-label="Фотографии молодожёнов">
+          <figure class="welcome-photo">
+            <picture>
+              <source srcset="assets/images/couple-03.webp" type="image/webp">
+              <img src="assets/images/couple-03.jpg" alt="Фёдор и Валерия" loading="lazy" width="600" height="750">
+            </picture>
+          </figure>
+          <figure class="welcome-photo">
+            <picture>
+              <source srcset="assets/images/couple-04.webp" type="image/webp">
+              <img src="assets/images/couple-04.jpg" alt="Фёдор и Валерия" loading="lazy" width="600" height="750">
+            </picture>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Место проведения: фото + карта (модалка) ========== -->
+    <section id="location" class="section-padding section--olive-tint">
+      <div class="container-narrow">
+        <h2 class="section-title">Усадьба Саниных</h2>
+        <p class="section-lead text-serif-body text-center max-w-xl mx-auto mb-10">
+          деревня Климово, 40, городской округ Солнечногорск, Московская область
+        </p>
+
+        <div class="location-grid">
+          <article class="location-card location-card--photo">
+            <picture>
+              <source srcset="assets/images/venue.webp" type="image/webp">
+              <img
+                src="assets/images/venue.jpg"
+                alt="Усадьба Саниных"
+                loading="lazy"
+                width="1200"
+                height="900"
+              >
+            </picture>
+          </article>
+
+          <article class="location-card location-card--map">
+            <iframe
+              class="location-map-iframe"
+              src="https://yandex.ru/map-widget/v1/?ll=36.739498%2C56.110086&z=17&l=map&pt=36.739498%2C56.110086%2Cpm2rdm"
+              title="Карта — Усадьба Саниных, Климово"
+              loading="lazy"
+              allowfullscreen
+            ></iframe>
+            <a
+              href="https://yandex.ru/maps/-/CPsBZ4jU"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="location-map-link font-sans"
+            >
+              Открыть в Яндекс.Картах
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Программа дня ========== -->
+    <section id="program" class="section-padding section--aperol-tint">
+      <div class="container-narrow">
+        <h2 class="section-title">Программа дня</h2>
+        <ol class="timeline mt-12" aria-label="Расписание свадебного дня">
+          <li class="timeline-item">
+            <time class="timeline-time" datetime="15:00">15:00</time>
+            <div class="timeline-content">
+              <h3 class="timeline-title">Прибытие гостей</h3>
+              <p class="timeline-desc">Welcome-зона</p>
+            </div>
+          </li>
+          <li class="timeline-item">
+            <time class="timeline-time" datetime="16:00">16:00</time>
+            <div class="timeline-content">
+              <h3 class="timeline-title">Свадебная церемония</h3>
+            </div>
+          </li>
+          <li class="timeline-item">
+            <time class="timeline-time" datetime="17:00">17:00</time>
+            <div class="timeline-content">
+              <h3 class="timeline-title">Праздничный ужин</h3>
+            </div>
+          </li>
+          <li class="timeline-item timeline-item--last">
+            <time class="timeline-time" datetime="23:00">23:00</time>
+            <div class="timeline-content">
+              <h3 class="timeline-title">Окончание вечера</h3>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========== Дресс-код ========== -->
+    <section id="dresscode" class="section-padding section--ivory">
+      <div class="container-narrow">
+        <h2 class="section-title">Дресс-код</h2>
+        <blockquote class="dresscode-quote text-serif-body font-serif">
+          Мы стремимся к комфорту в этот день, поэтому одевайтесь удобно, мягко, по летнему. Итальянский vibe
+        </blockquote>
+
+        <div class="moodboard" aria-label="Референсы дресс-кода">
+          <figure class="moodboard-item"><picture><source srcset="assets/images/mood-01.webp" type="image/webp"><img src="assets/images/mood-01.jpg" alt="Референс дресс-кода 1" loading="lazy" width="400" height="600"></picture></figure>
+          <figure class="moodboard-item"><picture><source srcset="assets/images/mood-02.webp" type="image/webp"><img src="assets/images/mood-02.jpg" alt="Референс дресс-кода 2" loading="lazy" width="600" height="400"></picture></figure>
+          <figure class="moodboard-item"><picture><source srcset="assets/images/mood-03.webp" type="image/webp"><img src="assets/images/mood-03.jpg" alt="Референс дресс-кода 3" loading="lazy" width="400" height="500"></picture></figure>
+          <figure class="moodboard-item"><picture><source srcset="assets/images/mood-04.webp" type="image/webp"><img src="assets/images/mood-04.jpg" alt="Референс дресс-кода 4" loading="lazy" width="500" height="400"></picture></figure>
+          <figure class="moodboard-item"><picture><source srcset="assets/images/mood-05.webp" type="image/webp"><img src="assets/images/mood-05.jpg" alt="Референс дресс-кода 5" loading="lazy" width="400" height="550"></picture></figure>
+          <figure class="moodboard-item"><picture><source srcset="assets/images/mood-06.webp" type="image/webp"><img src="assets/images/mood-06.jpg" alt="Референс дресс-кода 6" loading="lazy" width="600" height="450"></picture></figure>
+          <figure class="moodboard-item"><picture><source srcset="assets/images/mood-07.webp" type="image/webp"><img src="assets/images/mood-07.jpg" alt="Референс дресс-кода 7" loading="lazy" width="400" height="480"></picture></figure>
+          <figure class="moodboard-item"><picture><source srcset="assets/images/mood-08.webp" type="image/webp"><img src="assets/images/mood-08.jpg" alt="Референс дресс-кода 8" loading="lazy" width="450" height="600"></picture></figure>
+          <figure class="moodboard-item"><picture><source srcset="assets/images/mood-09.webp" type="image/webp"><img src="assets/images/mood-09.jpg" alt="Референс дресс-кода 9" loading="lazy" width="400" height="600"></picture></figure>
+          <figure class="moodboard-item"><picture><source srcset="assets/images/mood-10.webp" type="image/webp"><img src="assets/images/mood-10.jpg" alt="Референс дресс-кода 10" loading="lazy" width="400" height="600"></picture></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== RSVP ========== -->
+    <section id="rsvp" class="section-padding section--olive-tint">
+      <div class="container-narrow">
+        <h2 class="section-title">Подтвердите присутствие</h2>
+        <p class="section-lead text-serif-body text-center mb-8">Пожалуйста, заполните форму до 1 июля 2026</p>
+
+        <div class="rsvp-frame-wrapper">
+          <iframe
+            id="rsvp-form"
+            src="https://docs.google.com/forms/d/e/1FAIpQLScISkeooenMs6KpxY8HhOrxnu20_niIxFrUHvEC4sqnITTJZw/viewform?embedded=true"
+            title="Форма подтверждения присутствия"
+            class="rsvp-iframe"
+            loading="lazy"
+            allow="fullscreen"
+          ></iframe>
+        </div>
+        <p class="text-center text-sm text-muted mt-4 font-sans">
+          Если форма не отображается,
+          <a href="https://forms.gle/a8Ri4uNN9gnPhhSm8" class="link-accent" target="_blank" rel="noopener">откройте её в новой вкладке</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========== FAQ ========== -->
+    <section id="faq" class="section-padding section--aperol-tint">
+      <div class="container-narrow">
+        <h2 class="section-title">FAQ</h2>
+
+        <div class="faq-list" aria-label="Ответы на частые вопросы">
+          <details class="faq-item">
+            <summary class="faq-question font-serif">Что дарить молодожёнам?</summary>
+            <p class="faq-answer text-serif-body">
+              Cash. Если хотите подарить цветы — лучше дарите виниловую пластинку.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question font-serif">Будет ли трансфер?</summary>
+            <p class="faq-answer text-serif-body">
+              Будет. Подробная информация будет в ТГ-группе.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question font-serif">Не нашли ответа на вопрос?</summary>
+            <p class="faq-answer text-serif-body">
+              <a href="#rsvp" class="link-accent">Заполните форму</a> — мы добавим вас в чат, и там можно будет спросить.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="font-serif">Фёдор &amp; Валерия</p>
+    <p class="font-sans">29 · 08 · 2026</p>
+  </footer>
+
+
+  <script src="js/main.js"></script>
+</body>
+</html>
